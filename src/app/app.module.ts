@@ -1,6 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { InventoryService } from './inventory.service'
+// Link for the json containing current inventory.
+// https://webmppcapstone.blob.core.windows.net/data/itemsdata.json
 
+
+/**
+ * Components
+ */
 import { AppComponent } from './app.component';
 import { CartPipe } from './cart.pipe';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -11,6 +19,28 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+
+/**
+ * Services
+ */
+
+
+/**
+ * Directives
+ */
+
+
+/**
+ * Pipes
+ */
+
+
+/**
+ * Router
+ */
+
+import { router } from './app.route';
+
 
 @NgModule({
   declarations: [
@@ -26,9 +56,21 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    router,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+     InventoryService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+  }
+  ngOnInit() {
+    
+  }
+
+}
