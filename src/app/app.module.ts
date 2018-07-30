@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { InventoryService } from './inventory.service'
+import * as $ from 'jquery';
 // Link for the json containing current inventory.
 // https://webmppcapstone.blob.core.windows.net/data/itemsdata.json
 
@@ -23,6 +23,7 @@ import { FooterComponent } from './footer/footer.component';
 /**
  * Services
  */
+import { InventoryService } from './inventory.service'
 
 
 /**
@@ -61,16 +62,13 @@ import { router } from './app.route';
     HttpClientModule
   ],
   providers: [
-     InventoryService
+    InventoryService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
   constructor() {
-  }
-  ngOnInit() {
-    
   }
 
 }

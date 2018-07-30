@@ -7,9 +7,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class InventoryService {
-  public data: JSON;
+  public currentInventory: JSON;
+  public finishedFetching:boolean=false;
   constructor(private http: HttpClient) {
+  }
+  
+  public fetchInventory() {    
     this.http.get("https://webmppcapstone.blob.core.windows.net/data/itemsdata.json")
-      .subscribe((response) => this.data = JSON.parse(JSON.stringify(response)));
+      .subscribe((response) => { this.currentInventory = JSON.parse(JSON.stringify(response));this.finishedFetching=true; });
   }
 }
