@@ -24,9 +24,14 @@
             ],
             "styles": [
               "src/assets/bootstrap.min.css",
+              "src/assets/hover.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "D:/Angular/capstone/node_modules/jquery/dist/jquery.min.js",
+              "D:/Angular/capstone/node_modules/bootstrap/dist/js/bootstrap.min.js"
+              
+            ]
           },
           "configurations": {
             "production": {
