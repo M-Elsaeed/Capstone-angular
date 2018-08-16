@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 /**
  * Services
  */
+import { RndNumService } from './rnd-num.service';
 import { InventoryService } from './inventory.service'
 import { CartService } from './cart.service'
 
@@ -64,6 +65,7 @@ import { router } from './app.route';
     HttpClientModule
   ],
   providers: [
+    RndNumService,
     InventoryService,
     CartService
   ],

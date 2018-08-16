@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { forEach } from '../../node_modules/@angular/router/src/utils/collection';
+import { RndNumService } from './rnd-num.service';
 
-@Injectable({
-  providedIn: 'root'
-})
 class order {
   item: JSON;
   qty: number;
@@ -12,13 +10,17 @@ class order {
     this.qty = qty;
   }
 }
+@Injectable({
+  providedIn: 'root'
+})
 export class CartService {
-  public currentCartItems: order[] = []
+  public currentCartItems: order[] = [];
+
+  public shippingRate: number = 0;
 
 
-
-
-  constructor() {
+  constructor(Random:RndNumService) {
+    this.shippingRate = Random.randomInt(0, 10);
 
   }
 
@@ -40,7 +42,7 @@ export class CartService {
 
   removeItemFromCart(item: JSON, quantity: number) {
     let newOrder: order = new order(item, quantity);
-    
+
     let i = 0;
     for (i = 0; i < this.currentCartItems.length; i++) {
       if (newOrder.item === this.currentCartItems[i].item) {

@@ -1,3 +1,85 @@
-<p>
-  cart-page works!
-</p>
+<div class="inline-block-half">
+
+  <h1 class="centered-text">Order Details</h1>
+
+  <br>
+
+  <div class="centered-element centered-vertically w-80 curved-light-border">
+
+    <p class="inline-block-quart centered-text">Preview</p>
+    <p class="inline-block-quart centered-text">Item</p>
+    <p class="inline-block-quart centered-text">Price</p>
+    <p class="inline-block-quart centered-text">Qty.</p>
+    <p class="inline-block-quart centered-text">Total</p>
+
+
+  </div>
+
+  <br>
+
+  <div class="centered-element centered-vertically w-80 curved-light-border">
+
+    <div *ngFor="let order of Cart.currentCartItems">
+      <img class="inline-block-quart img50x50 centered-vertically" src="{{order.item.imagelink}}" alt="{{order.item.name}}">
+      <p class="inline-block-quart centered-text">{{order.item.name}}</p>
+      <p class="inline-block-quart centered-text">$ {{order.item.price.toFixed(2)}}</p>
+      <p class="inline-block-quart centered-text">{{order.qty}}</p>
+      <p class="inline-block-quart centered-text">$ {{order.qty*order.item.price.toFixed(2)}}</p>
+
+    </div>
+  </div>
+  <br>
+  <div class="centered-element centered-vertically w-80 curved-light-border">
+    <p class="inline-block-quart invisible"></p>
+    <p class="inline-block-quart invisible"></p>
+    <p class="inline-block-quart invisible"></p>
+    <p class="inline-block-quart centered-text">SubTotal</p>
+    <p class="inline-block-quart centered-text">$ {{getCartSummary().subTotal.toFixed(2)}}</p>
+  </div>
+
+</div>
+
+
+
+
+<div class="inline-block-half">
+  <h1 class="centered-text">Cart Summary</h1>
+  <br>
+
+  <div class="centered-element centered-vertically w-80 curved-light-border">    
+    <div>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">SubTotal</p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">$ {{getCartSummary().subTotal.toFixed(2)}}</p>    
+    </div>
+    <div>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">Shipping</p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">$ {{getCartSummary().shipping.toFixed(2)}}</p>    
+      </div>
+      <div>
+          <p class="inline-block-quart invisible"></p>
+          <p class="inline-block-quart centered-text">Taxes (10%)</p>
+          <p class="inline-block-quart invisible"></p>
+          <p class="inline-block-quart invisible"></p>
+          <p class="inline-block-quart centered-text">$ {{getCartSummary().tax.toFixed(2)}}</p>    
+        </div>
+  </div>
+  <br>
+  <div class="centered-element centered-vertically w-80 curved-light-border">    
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">Grand Total</p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">$ {{getCartSummary().grandTotal.toFixed(2)}}</p>    
+  </div>
+  <br>
+  <div class="centered-element centered-vertically w-80">
+<button class="btn btn-primary w-100">Checkout</button>
+  </div>
+
+</div>
