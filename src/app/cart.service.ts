@@ -6,10 +6,10 @@ import { forEach } from '../../node_modules/@angular/router/src/utils/collection
 })
 class order {
   item: JSON;
-  count: number;
-  constructor(item: JSON, count: number) {
+  qty: number;
+  constructor(item: JSON, qty: number) {
     this.item = item;
-    this.count = count;
+    this.qty = qty;
   }
 }
 export class CartService {
@@ -26,8 +26,8 @@ export class CartService {
     let newOrder: order = new order(item, quantity);
     let i = 0;
     for (i = 0; i < this.currentCartItems.length; i++) {
-      if (newOrder.item === this.currentCartItems[i].item) {
-        this.currentCartItems[i].count += newOrder.count;
+      if (newOrder.item["description"] == this.currentCartItems[i].item["description"]) {
+        this.currentCartItems[i].qty += newOrder.qty;
         break;
       }
     }
@@ -44,7 +44,7 @@ export class CartService {
     let i = 0;
     for (i = 0; i < this.currentCartItems.length; i++) {
       if (newOrder.item === this.currentCartItems[i].item) {
-        this.currentCartItems[i].count += newOrder.count;
+        this.currentCartItems[i].qty += newOrder.qty;
         break;
       }
     }

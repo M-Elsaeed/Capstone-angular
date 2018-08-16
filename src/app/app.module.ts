@@ -13,7 +13,6 @@ import * as $ from 'jquery';
  * Components
  */
 import { AppComponent } from './app.component';
-import { CartPipe } from './cart.pipe';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
@@ -50,7 +49,6 @@ import { router } from './app.route';
 @NgModule({
   declarations: [
     AppComponent,
-    CartPipe,
     HomePageComponent,
     ShoppingPageComponent,
     ProductPageComponent,
