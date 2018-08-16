@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../inventory.service';
+import { CartService } from '../cart.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-product-page',
@@ -8,9 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductPageComponent implements OnInit {
   itemToDisplay = undefined;
-
+  selectedQuantity:number = 1;
   constructor(private Inventory: InventoryService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private Cart: CartService) {
     this.activatedRoute.queryParams.subscribe(params => {
       let param1;
       let param2;
@@ -19,10 +21,10 @@ export class ProductPageComponent implements OnInit {
       param2 = params['subCatInd'];
       param3 = params['itemInd'];
       this.Inventory.currentInventory.subscribe((response) => {
-        this.itemToDisplay = response[param1].subcategories[param2].items[param3]
+        this.itemToDisplay = response[param1].subcategories[param2].items[param3];
+        console.log(this.itemToDisplay.stock);
       })
     });
-
   }
 
   ngOnInit() {

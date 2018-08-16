@@ -27,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
  * Services
  */
 import { InventoryService } from './inventory.service'
+import { CartService } from './cart.service'
 
 
 /**
@@ -65,7 +66,8 @@ import { router } from './app.route';
     HttpClientModule
   ],
   providers: [
-    InventoryService
+    InventoryService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
