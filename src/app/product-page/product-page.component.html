@@ -1,3 +1,29 @@
-<p>
-  product-page works!
-</p>
+<div class="inline-block-half">
+    <img [attr.src]="itemToDisplay?.imagelink" [attr.alt]="itemToDisplay?.name" class="img-item-4">
+</div>
+
+<div class="inline-block-half centered-text">
+    <br>
+    <br>
+    <h2> {{itemToDisplay?.name}} </h2>
+    <br>
+    <br>
+    <h6> The product is Rated at
+        <br>
+        <br> {{itemToDisplay?.rating}} Out of 5
+    </h6>
+    <br>
+    <br>
+    <h6>Price: {{itemToDisplay?.price}}$</h6>
+
+    <br>
+    <br>
+
+    <h6>Description: {{itemToDisplay?.description}}</h6>
+
+    <br>
+    <br>
+
+    <h6> Qty: </h6>
+
+</div>

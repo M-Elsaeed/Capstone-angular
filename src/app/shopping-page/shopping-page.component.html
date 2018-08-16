@@ -1,3 +1,24 @@
-<p>
-  shopping-page works!
-</p>
+<div class="fixed-side-panel">
+
+  <img class="expand btn" (click)="showSideBar=!showSideBar" src="https://21thirteen.com/wp-content/uploads/2016/03/hamburger-menu.jpg">
+
+  <div class="slideInRight items-list" *ngIf="showSideBar">
+    <div *ngFor="let cat of inventory">
+
+      <div class="inner-container level-0">
+        {{cat?.category}}
+        <div *ngFor="let subcat of cat?.subcategories" class="container level-1">
+          {{subcat?.name}}
+          <div *ngFor="let item of subcat?.items" class="container level-2 btn">
+            <button class="btn btn-primary" (click)="Router.navigateByUrl(Inventory.getItemUrl(item));">
+              {{item?.name}}
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

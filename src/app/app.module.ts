@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import {CommonModule}	from '@angular/common';
+
+
 import * as $ from 'jquery';
 // Link for the json containing current inventory.
 // https://webmppcapstone.blob.core.windows.net/data/itemsdata.json

@@ -1,8 +1,78 @@
+.centered-text {
+    text-align: center;
+}
+
+.centered-element {
+    position: relative !important;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.fixed-side-panel {
+    position: fixed ;
+    height: 90%;
+    width:20%;
+    background-color: black;
+    color:white;
+    overflow-y: auto;
+    
+}
+
+.img-item-4 {
+    height: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5%;
+    object-fit: fill;
+    width: 100%;
+}
+
+.img-item-2 {
+    height: 102%;
+    display: block;
+    margin: 0 auto;
+    object-fit: fill;
+    width:100%;    
+}
+.inline-block-half {
+    width: 50%!important;
+    display: inline-block;
+    padding: 2%!important;
+    height: 100%;
+    vertical-align: top;
+}
+
+.inner-container {
+    margin-top: 1% !important;
+}
+
 .main-container {
     margin: 0 auto;
     /* margin-top: 50px; */
     background-color: rgb(249, 236, 227);
 }
+/* /////////////////////////////Media Queries///////////////////////////////// */
+@media only screen and (max-device-width: 700px) {
+    .fixed-side-panel {
+        position: fixed ;
+        height: 100%;
+        width:50%;
+        background-color: black;
+        color:white;
+    }
+    .inline-block-half {
+        width: initial;
+        display: block;
+        padding: 2%!important;
+        height: initial;
+        position: relative !important;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+
+/* /////////////////////////////Animations//////////////////////////////////// */
 .slideInDowna {
     -webkit-animation-name: slideInDowna;
     animation-name: slideInDowna;
@@ -13,8 +83,6 @@
     /* animation-iteration-count: infinite; */
     /* animation-play-state: running; */
 }
-
-
 
 .slideInDown {
     -webkit-animation-name: slideInDown;
@@ -54,6 +122,7 @@
         transform: translateY(0);
     }
 }
+
 @keyframes slideInDowna {
     0% {
         -webkit-transform: translateY(-100%);
@@ -65,6 +134,7 @@
         transform: translateY(0);
     }
 }
+
 @-webkit-keyframes slideInDowna {
     0% {
         -webkit-transform: translateY(-100%);

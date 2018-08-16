@@ -1,0 +1,29 @@
+.level-0 {
+    color: red;
+    font-size: 24px;
+}
+
+.level-1 {
+    color: blue;
+    font-size: 18px;
+}
+
+.level-2 {
+    color: green;
+    font-size: 18px;
+}
+
+.expand {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    padding: 0;
+}
+
+.fixed-side-panel::-webkit-scrollbar {
+    width: 0px;
+    /* remove scrollbar space */
+    /* background-color: red; */
+    /* background: grey; */
+    /*  optional: just make scrollbar invisible */
+}

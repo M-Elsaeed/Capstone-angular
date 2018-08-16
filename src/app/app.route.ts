@@ -29,6 +29,22 @@ const routes: Routes = [
 
 
 
+// const routes = [
+//     { path: '', component: NavigateComponent },
+//     { path: 'field', component: FieldComponent },
+//     { path: 'book', component: MaterialFullComponent, children: [
+//       { path: '', redirectTo: '', pathMatch: 'full' },
+//       { path: ':id_book', component: MaterialFullComponent }
+//     ] },
+//     { path: 'edit', component: MaterialEditComponent, children: [
+//       { path: '', redirectTo: '', pathMatch: 'full' },
+//       { path: 'new', component: MaterialEditComponent },
+//       { path: ':id', component: MaterialEditComponent }
+//     ] },
+//     { path: '**', redirectTo: '/'}
+//     ];
+
+
 
 /**
  * Router Module Configuration
