@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../inventory.service';
 import { RndNumService } from '../rnd-num.service';
-
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -37,7 +37,8 @@ export class HomePageComponent implements OnInit {
 
 
   constructor(private Inventory: InventoryService,
-    private Random: RndNumService
+    private Random: RndNumService,
+    private Router: Router
   ) {
 
 

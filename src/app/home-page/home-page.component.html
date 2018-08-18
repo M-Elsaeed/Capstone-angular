@@ -2,7 +2,7 @@
 
   <div class="inner-container">
     <h1 class="centered-text">Welcome to StoresRus</h1>
-    <button class="btn btn-primary centered-element" routerLink="/Products">
+    <button class="btn btn-primary centered-element" routerLink="/Shopping">
       Shop All
     </button>
   </div>
@@ -17,29 +17,29 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="carousel-half">
-          <img class="img-item-2" [attr.src]="randomItems[0]?.imagelink" [attr.alt]="randomItems[0]?.name">
+          <img class="img-item-2" [attr.src]="randomItems[0]?.imagelink" [attr.alt]="randomItems[0]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[0]));" >
         </div>
         <div class="carousel-half">
-          <img class="img-item-4" [attr.src]="randomItems[1]?.imagelink" [attr.alt]="randomItems[1]?.name">
-          <img class="img-item-4" [attr.src]="randomItems[2]?.imagelink" [attr.alt]="randomItems[2]?.name">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="carousel-half">
-          <img class="img-item-4" [attr.src]="randomItems[3]?.imagelink" [attr.alt]="randomItems[3]?.name">
-          <img class="img-item-4" [attr.src]="randomItems[4]?.imagelink" [attr.alt]="randomItems[4]?.name">
-        </div>
-        <div class="carousel-half">
-          <img class="img-item-2" [attr.src]="randomItems[5]?.imagelink" [attr.alt]="randomItems[5]?.name">
+          <img class="img-item-4" [attr.src]="randomItems[1]?.imagelink" [attr.alt]="randomItems[1]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[1]));" >
+          <img class="img-item-4" [attr.src]="randomItems[2]?.imagelink" [attr.alt]="randomItems[2]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[2]));" >
         </div>
       </div>
       <div class="carousel-item">
         <div class="carousel-half">
-          <img class="img-item-2" [attr.src]="randomItems[6]?.imagelink" [attr.alt]="randomItems[6]?.name">
+          <img class="img-item-4" [attr.src]="randomItems[3]?.imagelink" [attr.alt]="randomItems[3]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[3]));" >
+          <img class="img-item-4" [attr.src]="randomItems[4]?.imagelink" [attr.alt]="randomItems[4]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[4]));" >
         </div>
         <div class="carousel-half">
-          <img class="img-item-4" [attr.src]="randomItems[7]?.imagelink" [attr.alt]="randomItems[7]?.name">
-          <img class="img-item-4" [attr.src]="randomItems[8]?.imagelink" [attr.alt]="randomItems[8]?.name">
+          <img class="img-item-2" [attr.src]="randomItems[5]?.imagelink" [attr.alt]="randomItems[5]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[5]));" >
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-half">
+          <img class="img-item-2" [attr.src]="randomItems[6]?.imagelink" [attr.alt]="randomItems[6]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[6]));" >
+        </div>
+        <div class="carousel-half">
+          <img class="img-item-4" [attr.src]="randomItems[7]?.imagelink" [attr.alt]="randomItems[7]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[7]));" >
+          <img class="img-item-4" [attr.src]="randomItems[8]?.imagelink" [attr.alt]="randomItems[8]?.name" (click)="Router.navigateByUrl(Inventory.getItemUrl(randomItems[8]));" >
         </div>
       </div>
     </div>
