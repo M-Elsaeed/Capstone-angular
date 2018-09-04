@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from '../../node_modules/rxjs';
+import { throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { rendererTypeName } from '../../node_modules/@angular/compiler';
 /**
  * This Service fetches inventory data from the server.
  */
@@ -9,15 +12,20 @@ import { Observable } from '../../node_modules/rxjs';
 })
 export class InventoryService {
   public currentInventory: Observable<any> = null;
+  public allItems: JSON[] = [];
   public isFetched: boolean = false;
   private inventoryObject = undefined;
-  constructor(private http: HttpClient) {
+  httpRequestInventory() {
     this.currentInventory = this.http.get("https://webmppcapstone.blob.core.windows.net/data/itemsdata.json");
-    this.currentInventory.subscribe((response) => {
+    this.currentInventory.pipe(retry(3)).subscribe((response) => {
       this.isFetched = true;
-
       this.inventoryObject = response;
+      
     });
+  }
+  constructor(private http: HttpClient) {
+    this.httpRequestInventory();
+
   }
 
   public getItemRefrences(item) {

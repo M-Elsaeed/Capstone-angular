@@ -1,3 +1,6 @@
+<div class="container">
+    <button class="btn btn-primary" (click)="location.back();">Back</button>
+</div>
 <div class="inline-block-half">
     <img [attr.src]="itemToDisplay?.imagelink" [attr.alt]="itemToDisplay?.name" class="img-item-4">
 </div>
@@ -31,7 +34,7 @@
 
     <label>Quantity:</label>
     <span class="invisible">iii</span>
-    <select (change) = "selectedQuantity= +$event.target.value" class="btn btn-light" form="quantity-form" name="quantity" autocomplete="off">
+    <select #quanSelector (change) = "selectedQuantity= +quanSelector.value" class="btn btn-light" form="quantity-form" name="quantity" autocomplete="off">
         <option *ngFor="let dummy of ' '.repeat(itemToDisplay?.stock).split(''), let x = index" value="{{x+1}}">{{x+1}}</option>
     </select>
     <br>

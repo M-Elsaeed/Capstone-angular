@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../inventory.service';
 import { CartService } from '../cart.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -9,10 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductPageComponent implements OnInit {
   itemToDisplay = undefined;
-  selectedQuantity:number = 1;
+  selectedQuantity: number = 1;
   constructor(private Inventory: InventoryService,
     private activatedRoute: ActivatedRoute,
-    private Cart: CartService) {
+    private Cart: CartService,
+    private Router: Router,
+    private location: Location) {
+
     this.activatedRoute.queryParams.subscribe(params => {
       let param1;
       let param2;

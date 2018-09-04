@@ -1,4 +1,10 @@
 <div class="main-container">
   <app-navbar></app-navbar>
-  <router-outlet *ngIf="Inventory.isFetched" ></router-outlet>
+  <router-outlet *ngIf="Inventory.isFetched else loading"></router-outlet>
+  <ng-template #loading>
+    <div>
+      Loading...
+      <button class="btn btn-success" (click)="Inventory.httpRequestInventory()" >Retry</button>
+    </div>
+  </ng-template>
 </div>
