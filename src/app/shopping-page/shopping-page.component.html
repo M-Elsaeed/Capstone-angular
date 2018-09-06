@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<img class="expand" (click)="Dis();logDis(fixedSidePanel);toggleSidePanel(fixedSidePanel)" src="https://21thirteen.com/wp-content/uploads/2016/03/hamburger-menu.jpg ">
+<img class="expand" (click)="toggleSidePanel(fixedSidePanel)" src="https://21thirteen.com/wp-content/uploads/2016/03/hamburger-menu.jpg ">
 
 <div [attr.class]="showSideBar? 'content-container centered-text': 'container centered-text' ">
   <h1>{{sortedItems.length}} Items Found</h1>

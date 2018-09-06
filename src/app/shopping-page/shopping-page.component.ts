@@ -28,6 +28,18 @@ export class ShoppingPageComponent implements OnInit {
   };
 
 
+  private toggleSidePanel(fixedSidePanel) {
+    this.showSideBar = !this.showSideBar;
+    if (fixedSidePanel.style.width == "25%") {
+      fixedSidePanel.style.width = "0";
+      fixedSidePanel.style.padding = "0";
+    }
+    else {
+      fixedSidePanel.style.width = "25%";
+      fixedSidePanel.style.padding = "10px";
+    }
+  }
+
   private navigateToSelf(params) {
     this.Router.navigateByUrl('/Shopping?' + params);
   }
