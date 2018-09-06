@@ -16,9 +16,10 @@ export class ShoppingPageComponent implements OnInit {
   private sortedItems = [];
   private cat = undefined;
   private subCat = undefined;
-  private showSideBar = true;
   private isStockOnly = false;
   private sortingMode = "none";
+  private showSideBar = false;
+
   private showSubs = {
     "Household and Beauty": false,
     "Pantry Items": false,
@@ -30,6 +31,7 @@ export class ShoppingPageComponent implements OnInit {
   private navigateToSelf(params) {
     this.Router.navigateByUrl('/Shopping?' + params);
   }
+
   private filterSortItems() {
     this.sortedItems = this.allItems;
     if (this.subCat !== undefined)
@@ -58,17 +60,26 @@ export class ShoppingPageComponent implements OnInit {
         });
         break;
       default:
-        // console.log("no sorting");
+      // console.log("no sorting");
 
     }
   }
+
+
+  private expandCategory(panel) {
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+
+    }
+  }
+
   private updateDisplayedItems() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.cat = params['cat'];
       this.subCat = params['subCat'];
       this.filterSortItems();
-      // console.log("subCat is " + params['subCat']);
-      // console.log("Cat is " + params['cat']);
     });
   }
 
@@ -89,7 +100,7 @@ export class ShoppingPageComponent implements OnInit {
 
 
   private logDis(x) {
-     console.log(x);
+    console.log(x);
   }
 
 
@@ -98,12 +109,11 @@ export class ShoppingPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private Cart: CartService
   ) {
-    // console.log("constructor called");
   }
 
   ngOnInit() {
-    // console.log("onInit called");
-    
+
+
     this.Inventory.currentInventory.subscribe((response) => {
       this.inventory = response;
       this.sortedItems = this.allItems = this.getAllItems();

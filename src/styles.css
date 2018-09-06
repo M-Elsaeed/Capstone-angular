@@ -20,13 +20,15 @@ p {
 }
 
 .fixed-side-panel {
-    padding:10px;
+    padding:0;
     position: fixed;
-    height: 90%;
-    width: 25%;
+    height: 80%;
+    top: 110px;
+    width: 0%;
     color: black;
     background-color: white;
     overflow-y: auto;
+    transition: width 0.2s ease-out;
 }
 
 .img50x50 {
