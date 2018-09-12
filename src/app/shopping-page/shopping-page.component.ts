@@ -29,6 +29,7 @@ export class ShoppingPageComponent implements OnInit {
 
 
   private toggleSidePanel(fixedSidePanel) {
+
     this.showSideBar = !this.showSideBar;
     if (fixedSidePanel.style.width == "25%") {
       fixedSidePanel.style.width = "0";
