@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { RndNumService } from '../rnd-num.service';
+import { InventoryService } from '../inventory.service';
+import { Router } from '../../../node_modules/@angular/router';
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
@@ -9,12 +11,19 @@ import { RndNumService } from '../rnd-num.service';
 export class CartPageComponent implements OnInit {
 
   constructor(private Cart: CartService,
-    private Random: RndNumService) {
-      
+    private Random: RndNumService,
+  private Inventory: InventoryService,
+private Router:Router) {
+
   }
 
   ngOnInit() {
   }
+
+  logDis(abc) {
+    console.log(abc);
+  }
+
 
   getCartSummary() {
     let subTotal = 0;

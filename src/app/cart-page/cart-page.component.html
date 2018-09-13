@@ -1,85 +1,154 @@
-<div class="inline-block-half">
+<div [attr.class]="showCheckoutForm?'main-cart ocapity-half':'main-cart'">
+  <div class="inline-block-half">
 
-  <h1 class="centered-text">Order Details</h1>
+    <h1 class="centered-text">Order Details</h1>
 
-  <br>
+    <br>
 
-  <div class="centered-element centered-vertically w-80 curved-light-border">
+    <div class="centered-element centered-vertically w-80 curved-light-border">
 
-    <p class="inline-block-quart centered-text">Preview</p>
-    <p class="inline-block-quart centered-text">Item</p>
-    <p class="inline-block-quart centered-text">Price</p>
-    <p class="inline-block-quart centered-text">Qty.</p>
-    <p class="inline-block-quart centered-text">Total</p>
+      <p class="inline-block-quart centered-text">Preview</p>
+      <p class="inline-block-quart centered-text">Item</p>
+      <p class="inline-block-quart centered-text">Price</p>
+      <p class="inline-block-quart centered-text">Qty.</p>
+      <p class="inline-block-quart centered-text">Total</p>
 
-
-  </div>
-
-  <br>
-
-  <div class="centered-element centered-vertically w-80 curved-light-border">
-
-    <div *ngFor="let order of Cart.currentCartItems">
-      <img class="inline-block-quart img50x50 centered-vertically" src="{{order.item.imagelink}}" alt="{{order.item.name}}">
-      <p class="inline-block-quart centered-text">{{order.item.name}}</p>
-      <p class="inline-block-quart centered-text">$ {{order.item.price.toFixed(2)}}</p>
-      <p class="inline-block-quart centered-text">{{order.qty}}</p>
-      <p class="inline-block-quart centered-text">$ {{order.qty*order.item.price.toFixed(2)}}</p>
 
     </div>
+
+    <br>
+
+    <div class="centered-element centered-vertically w-80 curved-light-border">
+
+      <div *ngFor="let order of Cart.currentCartItems">
+        <img #cartItemImg (mouseenter)="cartItemImg.src = 'https://cdn1.iconfinder.com/data/icons/rcons-line-ios-3/32/delete-512.png'"
+          (mouseleave)="cartItemImg.src = order.item.imagelink" (click)="Cart.removeItemFromCart(order.item)" class="inline-block-quart img50x50 centered-vertically"
+          src="{{order.item.imagelink}}" alt="{{order.item.name}}">
+        <p class="inline-block-quart centered-text" (click)="Router.navigateByUrl(Inventory.getItemUrl(order.item));">{{order.item.name}}</p>
+        <p class="inline-block-quart centered-text">$ {{order.item.price.toFixed(2)}}</p>
+        <p class="inline-block-quart centered-text">{{order.qty}}</p>
+        <p class="inline-block-quart centered-text">$ {{order.qty*order.item.price.toFixed(2)}}</p>
+
+      </div>
+    </div>
+    <br>
+    <div class="centered-element centered-vertically w-80 curved-light-border">
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">SubTotal</p>
+      <p class="inline-block-quart centered-text">$ {{getCartSummary().subTotal.toFixed(2)}}</p>
+    </div>
+
   </div>
-  <br>
-  <div class="centered-element centered-vertically w-80 curved-light-border">
-    <p class="inline-block-quart invisible"></p>
-    <p class="inline-block-quart invisible"></p>
-    <p class="inline-block-quart invisible"></p>
-    <p class="inline-block-quart centered-text">SubTotal</p>
-    <p class="inline-block-quart centered-text">$ {{getCartSummary().subTotal.toFixed(2)}}</p>
+
+
+
+
+  <div class="inline-block-half">
+    <h1 class="centered-text">Cart Summary</h1>
+    <br>
+
+    <div class="centered-element centered-vertically w-80 curved-light-border">
+      <div>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">SubTotal</p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">$ {{getCartSummary().subTotal.toFixed(2)}}</p>
+      </div>
+      <div>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">Shipping</p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">$ {{getCartSummary().shipping.toFixed(2)}}</p>
+      </div>
+      <div>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">Taxes (10%)</p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart invisible"></p>
+        <p class="inline-block-quart centered-text">$ {{getCartSummary().tax.toFixed(2)}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="centered-element centered-vertically w-80 curved-light-border">
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">Grand Total</p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart invisible"></p>
+      <p class="inline-block-quart centered-text">$ {{getCartSummary().grandTotal.toFixed(2)}}</p>
+    </div>
+    <br>
+    <div class="centered-element centered-vertically w-80">
+      <button class="btn btn-primary w-100" (click)="showCheckoutForm = !showCheckoutForm;">Checkout</button>
+    </div>
+
   </div>
 
 </div>
 
 
+<div *ngIf="showCheckoutForm" class="checkout-form scale-up-center ">
+  <div class="inline-block-half">
+    <h3>Billing Address</h3>
+    <label for="fname">
+      <i class="fa fa-user"></i> Full Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+    <label for="email">
+      <i class="fa fa-envelope"></i> Email</label>
+    <input type="text" id="email" name="email" placeholder="john@example.com">
+    <label for="adr">
+      <i class="fa fa-address-card"></i> Address</label>
+    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+    <label for="city">
+      <i class="fa fa-city " aria-hidden="true"></i> City</label>
+    <input type="text" id="city" name="city" placeholder="New York">
 
+    <div class="inline-block-half">
 
-<div class="inline-block-half">
-  <h1 class="centered-text">Cart Summary</h1>
-  <br>
-
-  <div class="centered-element centered-vertically w-80 curved-light-border">    
-    <div>
-      <p class="inline-block-quart invisible"></p>
-      <p class="inline-block-quart centered-text">SubTotal</p>
-      <p class="inline-block-quart invisible"></p>
-      <p class="inline-block-quart invisible"></p>
-      <p class="inline-block-quart centered-text">$ {{getCartSummary().subTotal.toFixed(2)}}</p>    
+      <label for="state">State</label>
+      <input type="text" id="state" name="state" placeholder="NY">
     </div>
-    <div>
-        <p class="inline-block-quart invisible"></p>
-        <p class="inline-block-quart centered-text">Shipping</p>
-        <p class="inline-block-quart invisible"></p>
-        <p class="inline-block-quart invisible"></p>
-        <p class="inline-block-quart centered-text">$ {{getCartSummary().shipping.toFixed(2)}}</p>    
-      </div>
-      <div>
-          <p class="inline-block-quart invisible"></p>
-          <p class="inline-block-quart centered-text">Taxes (10%)</p>
-          <p class="inline-block-quart invisible"></p>
-          <p class="inline-block-quart invisible"></p>
-          <p class="inline-block-quart centered-text">$ {{getCartSummary().tax.toFixed(2)}}</p>    
-        </div>
-  </div>
-  <br>
-  <div class="centered-element centered-vertically w-80 curved-light-border">    
-      <p class="inline-block-quart invisible"></p>
-      <p class="inline-block-quart centered-text">Grand Total</p>
-      <p class="inline-block-quart invisible"></p>
-      <p class="inline-block-quart invisible"></p>
-      <p class="inline-block-quart centered-text">$ {{getCartSummary().grandTotal.toFixed(2)}}</p>    
-  </div>
-  <br>
-  <div class="centered-element centered-vertically w-80">
-<button class="btn btn-primary w-100">Checkout</button>
+
+    <div class="inline-block-half">
+      <label for="zip">Zip</label>
+      <input type="text" id="zip" name="zip" placeholder="10001">
+    </div>
+
   </div>
 
+
+  <div class="inline-block-half">
+    <div>
+      <h3>Payment </h3>
+    </div>
+
+    <label for="fname">Accepted Cards</label>
+    <div>
+      <i class="fab fa-cc-visa fa-2x" style="color:navy;  margin-right: 3px; "></i>
+      <i class="fab fa-cc-amex fa-2x" style="color:blue; margin-right: 3px; "></i>
+      <i class="fab fa-cc-mastercard fa-2x" style="color:red; margin-right: 3px; "></i>
+      <i class="fab fa-cc-discover fa-2x" style="color:orange; margin-right: 3px; "></i>
+    </div>
+    <label for="cname">Name on Card</label>
+    <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+    <label for="ccnum">Credit card number</label>
+    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+    <label for="expmonth">Exp Month</label>
+    <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+    <div class="inline-block-half">
+      <label for="expyear">Exp Year</label>
+      <input type="text" id="expyear" name="expyear" placeholder="2018">
+    </div>
+    <div class="inline-block-half">
+      <label for="cvv">CVV</label>
+      <input type="text" id="cvv" name="cvv" placeholder="352">
+    </div>
+
+
+  </div>
+  <button class="btn btn-primary w-100" (click)="showCheckoutForm = !showCheckoutForm;">Checkout</button>
 </div>

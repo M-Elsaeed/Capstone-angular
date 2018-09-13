@@ -19,7 +19,7 @@ export class CartService {
   public shippingRate: number = 0;
 
 
-  constructor(Random:RndNumService) {
+  constructor(Random: RndNumService) {
     this.shippingRate = Random.randomInt(0, 10);
 
   }
@@ -40,18 +40,13 @@ export class CartService {
   }
 
 
-  removeItemFromCart(item: JSON, quantity: number) {
-    let newOrder: order = new order(item, quantity);
-
+  removeItemFromCart(item: JSON) {
     let i = 0;
     for (i = 0; i < this.currentCartItems.length; i++) {
-      if (newOrder.item === this.currentCartItems[i].item) {
-        this.currentCartItems[i].qty += newOrder.qty;
+      if (item === this.currentCartItems[i].item) {
+        this.currentCartItems.splice(i,1);
         break;
       }
-    }
-    if (i === this.currentCartItems.length) {
-      this.currentCartItems.push(newOrder);
     }
     console.log(this.currentCartItems);
   }
