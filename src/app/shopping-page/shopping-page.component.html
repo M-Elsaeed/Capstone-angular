@@ -31,12 +31,16 @@
 </div>
 
 <div [attr.class]="showSideBar? 'content-container centered-text': 'container centered-text' ">
-  <div *ngFor="let item of sortedItems ; trackBy: trackByFn " class="grid-cell centered-text curved-light-border ">
-    <p>{{item.name}}</p>
-    <!-- <img [attr.src]="item.imagelink "> -->
+  <div *ngFor="let item of sortedItems | paginate: { itemsPerPage: 10, currentPage: pageNum } ; trackBy: trackByFn " 
+  class=" grid-cell centered-text curved-light-border ">
+    <p (click) = "Router.navigateByUrl(Inventory.getItemUrl(item));" >{{item.name}}</p>
+    <!-- <img (click) = "Router.navigateByUrl(Inventory.getItemUrl(item));" [attr.src]="item.imagelink "> -->
     <p class="grid-cell-price ">${{item.price}}</p>
     <p class="grid-cell-price ">Rating : {{item.rating}}</p>
     <p class="grid-cell-price ">stock : {{item.stock}}</p>
     <button class="btn btn-primary " (click)="Cart.addItemToCart(item,1) ">Add</button>
   </div>
+
+  <pagination-controls (pageChange)="pageNum = $event"></pagination-controls>
+
 </div>

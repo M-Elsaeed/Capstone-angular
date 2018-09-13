@@ -19,6 +19,7 @@ export class ShoppingPageComponent implements OnInit {
   private isStockOnly = false;
   private sortingMode = "none";
   private showSideBar = false;
+  private pageNum: number = 1;
 
   private showSubs = {
     "Household and Beauty": false,
