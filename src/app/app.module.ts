@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CommonModule}	from '@angular/common';
 
 
+
 import * as $ from 'jquery';
 // Link for the json containing current inventory.
 // https://webmppcapstone.blob.core.windows.net/data/itemsdata.json
@@ -38,6 +39,7 @@ import { CartService } from './cart.service'
 /**
  * Pipes
  */
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 /**
@@ -62,7 +64,8 @@ import { router } from './app.route';
   imports: [
     BrowserModule,
     router,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     RndNumService,

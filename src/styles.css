@@ -58,7 +58,7 @@ p {
     width: 50%!important;
     display: inline-block;
     padding: 2%!important;
-    height: 100%;
+    /* height: 100%; */
     vertical-align: top;
 }
 
@@ -128,6 +128,9 @@ p {
     animation-fill-mode: both;
     /* animation-iteration-count: infinite; */
     /* animation-play-state: running; */
+}
+.scale-up-center {
+	animation: scale-up-center 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
 * {
@@ -214,3 +217,12 @@ p {
         transform: translateY(0);
     }
 }
+
+@keyframes scale-up-center {
+    0% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
