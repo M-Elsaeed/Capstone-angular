@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InventoryService } from '../inventory.service';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { CartService } from '../cart.service';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 
 
@@ -10,7 +12,7 @@ import { CartService } from '../cart.service';
   templateUrl: './shopping-page.component.html',
   styleUrls: ['./shopping-page.component.css']
 })
-export class ShoppingPageComponent implements OnInit {
+export class ShoppingPageComponent implements OnInit , OnDestroy {
   private inventory = [];
   private allItems = [];
   private sortedItems = [];
@@ -124,8 +126,10 @@ export class ShoppingPageComponent implements OnInit {
     private Cart: CartService
   ) {
   }
-
+  subscription: Subscription;
   ngOnInit() {
+    this.subscription = this.Router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => window.scrollTo(0, 0));
 
 
     this.Inventory.currentInventory.subscribe((response) => {
@@ -133,6 +137,9 @@ export class ShoppingPageComponent implements OnInit {
       this.sortedItems = this.allItems = this.getAllItems();
       this.updateDisplayedItems();
     });
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 

@@ -21,10 +21,15 @@
     <div class="centered-element centered-vertically w-80 curved-light-border">
 
       <div *ngFor="let order of Cart.currentCartItems">
-        <img #cartItemImg (mouseenter)="cartItemImg.src = 'https://cdn1.iconfinder.com/data/icons/rcons-line-ios-3/32/delete-512.png'"
-          (mouseleave)="cartItemImg.src = order.item.imagelink" (click)="Cart.removeItemFromCart(order.item)" class="inline-block-quart img50x50 centered-vertically"
-          src="{{order.item.imagelink}}" alt="{{order.item.name}}">
-        <p class="inline-block-quart centered-text" (click)="Router.navigateByUrl(Inventory.getItemUrl(order.item));">{{order.item.name}}</p>
+        <img #cartItemImg
+             (mouseenter)="cartItemImg.src = 'https://cdn1.iconfinder.com/data/icons/rcons-line-ios-3/32/delete-512.png'"
+             (mouseleave)="cartItemImg.src = order.item.imagelink"
+             (click)="Cart.removeItemFromCart(order.item)"
+             class="inline-block-quart img50x50 centered-vertically"
+             src="{{order.item.imagelink}}"
+             alt="{{order.item.name}}">
+        <p class="inline-block-quart centered-text"
+           (click)="Router.navigateByUrl(Inventory.getItemUrl(order.item));">{{order.item.name}}</p>
         <p class="inline-block-quart centered-text">$ {{order.item.price.toFixed(2)}}</p>
         <p class="inline-block-quart centered-text">{{order.qty}}</p>
         <p class="inline-block-quart centered-text">$ {{order.qty*order.item.price.toFixed(2)}}</p>
@@ -82,7 +87,8 @@
     </div>
     <br>
     <div class="centered-element centered-vertically w-80">
-      <button class="btn btn-primary w-100" (click)="showCheckoutForm = !showCheckoutForm;">Checkout</button>
+      <button class="btn btn-primary w-100"
+              (click)="showCheckoutForm = !showCheckoutForm;">Checkout</button>
     </div>
 
   </div>
@@ -90,65 +96,160 @@
 </div>
 
 
-<div *ngIf="showCheckoutForm" class="checkout-form scale-up-center ">
-  <div class="inline-block-half">
-    <h3>Billing Address</h3>
-    <label for="fname">
-      <i class="fa fa-user"></i> Full Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-    <label for="email">
-      <i class="fa fa-envelope"></i> Email</label>
-    <input type="text" id="email" name="email" placeholder="john@example.com">
-    <label for="adr">
-      <i class="fa fa-address-card"></i> Address</label>
-    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-    <label for="city">
-      <i class="fa fa-city " aria-hidden="true"></i> City</label>
-    <input type="text" id="city" name="city" placeholder="New York">
-
-    <div class="inline-block-half">
-
-      <label for="state">State</label>
-      <input type="text" id="state" name="state" placeholder="NY">
-    </div>
-
-    <div class="inline-block-half">
-      <label for="zip">Zip</label>
-      <input type="text" id="zip" name="zip" placeholder="10001">
-    </div>
-
+<div #floatingForm
+     @fade
+     *ngIf="showCheckoutForm"
+     class="checkout-form">
+  <div class="alert alert-success">
+    Thank you for shopping. Looking forward to seeing you again!!
   </div>
-
-
-  <div class="inline-block-half">
-    <div>
-      <h3>Payment </h3>
-    </div>
-
-    <label for="fname">Accepted Cards</label>
-    <div>
-      <i class="fab fa-cc-visa fa-2x" style="color:navy;  margin-right: 3px; "></i>
-      <i class="fab fa-cc-amex fa-2x" style="color:blue; margin-right: 3px; "></i>
-      <i class="fab fa-cc-mastercard fa-2x" style="color:red; margin-right: 3px; "></i>
-      <i class="fab fa-cc-discover fa-2x" style="color:orange; margin-right: 3px; "></i>
-    </div>
-    <label for="cname">Name on Card</label>
-    <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-    <label for="ccnum">Credit card number</label>
-    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-    <label for="expmonth">Exp Month</label>
-    <input type="text" id="expmonth" name="expmonth" placeholder="September">
-
-    <div class="inline-block-half">
-      <label for="expyear">Exp Year</label>
-      <input type="text" id="expyear" name="expyear" placeholder="2018">
-    </div>
-    <div class="inline-block-half">
-      <label for="cvv">CVV</label>
-      <input type="text" id="cvv" name="cvv" placeholder="352">
-    </div>
-
-
+  <div class="alert alert-danger">
+    Please insure all entered information is correct.
   </div>
-  <button class="btn btn-primary w-100" (click)="showCheckoutForm = !showCheckoutForm;">Checkout</button>
+  <button (click)="showCheckoutForm=false"
+          class="btn btn-success">close</button>
+  <form (ngSubmit)="scrollTop(floatingForm);"
+        #heroForm="ngForm">
+    <div class="inline-block-half form-group">
+
+      <fieldset>
+        <legend>Billing Address</legend>
+        <label for="firstname">
+          <i class="fa fa-user"></i>
+          Full Name
+        </label>
+        <input type="text"
+               name="firstname"
+               placeholder="John M. Doe"
+               class="form-control"
+               required
+               ngModel
+               #fname="ngModel">
+
+        <label for="email">
+          <i class="fa fa-envelope"></i> Email</label>
+        <input pattern=".+@.+.com"
+               type="email"
+               name="email"
+               placeholder="john@example.com"
+               class="form-control"
+               required
+               ngModel
+               #email="ngModel">
+
+        <label>
+          <i class="fa fa-address-card"></i> Address</label>
+        <input class="form-control"
+               type="text"
+               name="address"
+               placeholder="542 W. 15th Street"
+               required
+               ngModel
+               #address="ngModel">
+        <label for="city">
+          <i class="fa fa-city "
+             aria-hidden="true"></i> City</label>
+        <input class="form-control"
+               type="text"
+               name="city"
+               placeholder="New York"
+               required
+               ngModel
+               #city="ngModel">
+
+        <div class="inline-block-half-checkout">
+
+          <label for="state">State</label>
+          <input class="form-control"
+                 type="text"
+                 name="state"
+                 placeholder="NY"
+                 required
+                 ngModel
+                 #state="ngModel">
+        </div>
+
+        <div class="inline-block-half-checkout">
+          <label for="zip">Zip</label>
+          <input class="form-control"
+                 type="text"
+                 name="zip"
+                 placeholder="10001"
+                 required
+                 ngModel
+                 #zip="ngModel">
+        </div>
+
+
+      </fieldset>
+
+    </div>
+
+
+
+
+
+
+    <div class="inline-block-half form-group">
+      <fieldset>
+        <legend>Payment</legend>
+
+        <label for="fname">Accepted Cards</label>
+        <div>
+          <i class="fab fa-cc-visa fa-2x"
+             style="color:navy;  "></i>
+          <i class="fab fa-cc-amex fa-2x"
+             style="color:blue; "></i>
+          <i class="fab fa-cc-mastercard fa-2x"
+             style="color:red; "></i>
+          <i class="fab fa-cc-discover fa-2x"
+             style="color:orange; "></i>
+        </div>
+        <label for="cardname">Name on Card</label>
+        <input class="form-control"
+               type="text"
+               name="cardname"
+               placeholder="John More Doe"
+               required
+               ngModel
+               #cardname="ngModel">
+        <label for="cardnumber">Credit card number</label>
+        <input class="form-control"
+               type="text"
+               name="cardnumber"
+               placeholder="1111-2222-3333-4444"
+               required
+               ngModel
+               #cardnumber="ngModel">
+        <label for="expmonth">Exp Month</label>
+        <input class="form-control"
+               type="month"
+               name="expmonth"
+               placeholder="September"
+               required
+               ngModel
+               #expdate="ngModel">
+
+
+        <label for="cvv">CVV</label>
+        <input class="form-control"
+               type="text"
+               name="cvv"
+               placeholder="352"
+               required
+               maxlength="3"
+               minlength="3"
+               ngModel
+               #cvv="ngModel">
+
+      </fieldset>
+
+    </div>
+    <button type="submit"
+            class="btn btn-primary w-100">
+      Confirm Checkout
+    </button>
+
+  </form>
+
 </div>
