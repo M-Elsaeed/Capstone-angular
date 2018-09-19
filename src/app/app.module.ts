@@ -24,6 +24,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 /**
  * Services
@@ -31,6 +32,9 @@ import { FooterComponent } from './footer/footer.component';
 import { RndNumService } from './rnd-num.service';
 import { InventoryService } from './inventory.service';
 import { CartService } from './cart.service';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+
 
 
 /**
@@ -49,7 +53,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
  */
 
 import { router } from './app.route';
-import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -76,7 +79,9 @@ import { LoginComponent } from './login/login.component';
   providers: [
     RndNumService,
     InventoryService,
-    CartService
+    CartService,
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

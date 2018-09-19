@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,38 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private httpModule: HttpClient) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
 
   }
 
-  logDis(form) {
-    console.log(form);
-    console.log(form.value.email);
-    console.log(form.value.password);
+  loginUser(userEmail) {
+    let body = '{"username" : "' + userEmail + '"}';
+    console.log(body);
+
+    this.authService.login(body).subscribe(requestResponse => {
+      console.log(requestResponse);
+      if (true) {
+        // Save Into Localstorage
+
+        this.authService.setToken(requestResponse['id']);
+
+        //Redirect to HomePage
+        setTimeout(() => {
+          this.router.navigate(['/Home']);
+        }, 3000)
+      } else {
+        // Error
+        console.log(requestResponse['message']);
+      }
+    });
   }
+
+
+
+
 
 }

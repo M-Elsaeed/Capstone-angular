@@ -11,6 +11,7 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth-guard.service';
 
 
 /**
@@ -21,12 +22,12 @@ const routes: Routes = [
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: 'Home', component: HomePageComponent },
     { path: 'Login', component: LoginComponent },
-    { path: 'Shopping', component: ShoppingPageComponent },
+    { path: 'Shopping', component: ShoppingPageComponent ,canActivate: [AuthGuardService]},
     { path: 'Products', component: ProductPageComponent },
     { path: 'Cart', component: CartPageComponent },
     { path: 'Contact', component: ContactPageComponent },
     { path: 'About', component: AboutPageComponent },
-    // { path: '**', redirectTo: 'not-found' }
+    //{ path: '**', redirectTo: HomePageComponent }
 ];
 
 
