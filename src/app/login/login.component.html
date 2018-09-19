@@ -1,0 +1,54 @@
+<div class="LoginForm">
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Admin Login</h2>
+        <p>Please enter your email and password</p>
+      </div>
+      <form (ngSubmit)="logDis(heroForm);"
+            #heroForm="ngForm">
+        <div class="alert alert-danger"
+             *ngIf="email.touched && email.invalid">
+          Please Enter A valid Email ex. john@example.com
+        </div>
+        <label for="email">
+          <i class="fa fa-envelope"></i> Email</label>
+        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+               type="email"
+               name="email"
+               placeholder="john@example.com"
+               class="form-control"
+               required
+               ngModel
+               #email="ngModel">
+
+        <div class="alert alert-danger"
+             *ngIf="password.touched && password.invalid">
+          Please Enter your password
+        </div>
+        <label for="password">
+          <i class="fas fa-lock"></i>
+          Password
+        </label>
+        <input type="password"
+               name="password"
+               class="form-control"
+               required
+               ngModel
+               #password="ngModel">
+
+        <div class="forgot">
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="heroForm.invalid">Login</button>
+
+
+
+      </form>
+    </div>
+
+
+  </div>
+</div>

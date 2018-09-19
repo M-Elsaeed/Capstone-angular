@@ -10,6 +10,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { LoginComponent } from './login/login.component';
 
 
 /**
@@ -19,6 +20,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 const routes: Routes = [
     { path: '', redirectTo: 'Home', pathMatch: 'full' },
     { path: 'Home', component: HomePageComponent },
+    { path: 'Login', component: LoginComponent },
     { path: 'Shopping', component: ShoppingPageComponent },
     { path: 'Products', component: ProductPageComponent },
     { path: 'Cart', component: CartPageComponent },

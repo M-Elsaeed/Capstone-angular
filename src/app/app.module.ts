@@ -49,6 +49,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
  */
 
 import { router } from './app.route';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { router } from './app.route';
     ContactPageComponent,
     AboutPageComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
