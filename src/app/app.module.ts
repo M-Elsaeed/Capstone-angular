@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, OnInit } from '@angular/core';
+import { NgModule, OnInit, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {CommonModule}	from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -27,8 +29,8 @@ import { FooterComponent } from './footer/footer.component';
  * Services
  */
 import { RndNumService } from './rnd-num.service';
-import { InventoryService } from './inventory.service'
-import { CartService } from './cart.service'
+import { InventoryService } from './inventory.service';
+import { CartService } from './cart.service';
 
 
 /**
@@ -39,7 +41,7 @@ import { CartService } from './cart.service'
 /**
  * Pipes
  */
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 /**
@@ -65,6 +67,8 @@ import { router } from './app.route';
     BrowserModule,
     router,
     HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
     NgxPaginationModule
   ],
   providers: [

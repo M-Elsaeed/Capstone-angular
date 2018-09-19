@@ -22,11 +22,14 @@
     "@angular/router": "^6.0.3",
     "@fortawesome/fontawesome-free": "^5.3.1",
     "@types/jquery": "^3.3.5",
+    "animate.css": "^3.7.0",
     "core-js": "^2.5.4",
     "hoek": "^5.0.4",
     "jquery": "^3.3.1",
+    "ng2-scroll-to-el": "^1.2.1",
     "ngx-pagination": "^3.2.0",
     "rxjs": "^6.0.0",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
