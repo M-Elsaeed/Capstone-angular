@@ -15,6 +15,7 @@ This is still under development. This project's main purpose is to showcase my s
 ## Under development
 
 - Authentication using JWT.
+- The backend for implementing JWT authentication will be done using expressjs and Mongoose
 
 ## To Be Developed
 
