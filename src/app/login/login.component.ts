@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(body).subscribe(requestResponse => {
       console.log(requestResponse);
-      if (true) {
+      if (requestResponse['id']) {
         // Save Into Localstorage
 
         this.authService.setToken(requestResponse['id']);

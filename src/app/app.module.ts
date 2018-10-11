@@ -33,7 +33,7 @@ import { RndNumService } from './rnd-num.service';
 import { InventoryService } from './inventory.service';
 import { CartService } from './cart.service';
 import { AuthService } from './auth.service';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService,LoginPageAuthGuard } from './auth-guard.service';
 
 
 
@@ -81,7 +81,8 @@ import { router } from './app.route';
     InventoryService,
     CartService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    LoginPageAuthGuard
   ],
   bootstrap: [AppComponent]
 })
