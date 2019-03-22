@@ -8,10 +8,10 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   
-  private loaded:boolean=false;
-  private scrolledPercent: string;
-  private scrolledMass: boolean = false;
-  private divPlaceHolder:string = "";
+  public loaded:boolean=false;
+  public scrolledPercent: string;
+  public scrolledMass: boolean = false;
+  public divPlaceHolder:string = "";
   scrollUpdate() {
     let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     return this.scrolledPercent;
   }
 
-  constructor(private cdRef: ChangeDetectorRef) {
+  constructor(public cdRef: ChangeDetectorRef) {
     window.onscroll = this.scrollUpdate;
   }
   ngOnInit() {

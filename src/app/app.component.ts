@@ -9,7 +9,7 @@ import { InventoryService } from './inventory.service';
 export class AppComponent implements OnInit {
 
   title = 'app';
-  constructor(private Inventory: InventoryService
+  constructor(public Inventory: InventoryService
   ) { }
   ngOnInit() {
     

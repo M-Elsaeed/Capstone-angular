@@ -14,7 +14,7 @@ export class InventoryService {
   public currentInventory: Observable<any> = null;
   public allItems: JSON[] = [];
   public isFetched: boolean = false;
-  private inventoryObject = undefined;
+  public inventoryObject = undefined;
   httpRequestInventory() {
     this.currentInventory = this.http.get("https://webmppcapstone.blob.core.windows.net/data/itemsdata.json");
     this.currentInventory.pipe(retry(3)).subscribe((response) => {
@@ -23,7 +23,7 @@ export class InventoryService {
       
     });
   }
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.httpRequestInventory();
 
   }

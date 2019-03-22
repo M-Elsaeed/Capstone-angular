@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
 
   login(loginData) {

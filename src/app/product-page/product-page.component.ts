@@ -11,11 +11,11 @@ import { Location } from '@angular/common';
 export class ProductPageComponent implements OnInit {
   itemToDisplay = undefined;
   selectedQuantity: number = 1;
-  constructor(private Inventory: InventoryService,
-    private activatedRoute: ActivatedRoute,
-    private Cart: CartService,
-    private Router: Router,
-    private location: Location) {
+  constructor(public Inventory: InventoryService,
+    public activatedRoute: ActivatedRoute,
+    public Cart: CartService,
+    public Router: Router,
+    public location: Location) {
 
     this.activatedRoute.queryParams.subscribe(params => {
       let param1;

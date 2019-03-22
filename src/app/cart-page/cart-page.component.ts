@@ -13,10 +13,10 @@ import { formatDate } from '@angular/common';
 })
 export class CartPageComponent implements OnInit {
   showCheckoutForm = true;
-  constructor(private Cart: CartService,
-    private Random: RndNumService,
-    private Inventory: InventoryService,
-    private Router: Router) {
+  constructor(public Cart: CartService,
+    public Random: RndNumService,
+    public Inventory: InventoryService,
+    public Router: Router) {
 
   }
 

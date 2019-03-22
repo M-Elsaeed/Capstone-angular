@@ -36,9 +36,9 @@ export class HomePageComponent implements OnInit {
   }
 
 
-  constructor(private Inventory: InventoryService,
-    private Random: RndNumService,
-    private Router: Router
+  constructor(public Inventory: InventoryService,
+    public Random: RndNumService,
+    public Router: Router
   ) {
 
 

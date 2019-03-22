@@ -13,17 +13,17 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./shopping-page.component.css']
 })
 export class ShoppingPageComponent implements OnInit , OnDestroy {
-  private inventory = [];
-  private allItems = [];
-  private sortedItems = [];
-  private cat = undefined;
-  private subCat = undefined;
-  private isStockOnly = false;
-  private sortingMode = "none";
-  private showSideBar = false;
-  private pageNum: number = 1;
+  public inventory = [];
+  public allItems = [];
+  public sortedItems = [];
+  public cat = undefined;
+  public subCat = undefined;
+  public isStockOnly = false;
+  public sortingMode = "none";
+  public showSideBar = false;
+  public pageNum: number = 1;
 
-  private showSubs = {
+  public showSubs = {
     "Household and Beauty": false,
     "Pantry Items": false,
     "Perishables": false,
@@ -31,7 +31,7 @@ export class ShoppingPageComponent implements OnInit , OnDestroy {
   };
 
 
-  private toggleSidePanel(fixedSidePanel) {
+  public toggleSidePanel(fixedSidePanel) {
 
     this.showSideBar = !this.showSideBar;
     if (fixedSidePanel.style.width == "25%") {
@@ -44,11 +44,11 @@ export class ShoppingPageComponent implements OnInit , OnDestroy {
     }
   }
 
-  private navigateToSelf(params) {
+  public navigateToSelf(params) {
     this.Router.navigateByUrl('/Shopping?' + params);
   }
 
-  private filterSortItems() {
+  public filterSortItems() {
     this.sortedItems = this.allItems;
     if (this.subCat !== undefined)
       this.sortedItems = this.sortedItems.filter((item) => { return item.subcategory.toLowerCase() === this.subCat.toLowerCase() ? true : false; });
@@ -82,7 +82,7 @@ export class ShoppingPageComponent implements OnInit , OnDestroy {
   }
 
 
-  private expandCategory(panel) {
+  public expandCategory(panel) {
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
@@ -91,7 +91,7 @@ export class ShoppingPageComponent implements OnInit , OnDestroy {
     }
   }
 
-  private updateDisplayedItems() {
+  public updateDisplayedItems() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.cat = params['cat'];
       this.subCat = params['subCat'];
@@ -99,7 +99,7 @@ export class ShoppingPageComponent implements OnInit , OnDestroy {
     });
   }
 
-  private getAllItems() {
+  public getAllItems() {
     let myItemsArray: JSON[] = [];
     this.inventory.
       forEach((category) => {
@@ -115,15 +115,15 @@ export class ShoppingPageComponent implements OnInit , OnDestroy {
   }
 
 
-  private logDis(x) {
+  public logDis(x) {
     console.log(x);
   }
 
 
-  constructor(private Inventory: InventoryService,
-    private Router: Router,
-    private activatedRoute: ActivatedRoute,
-    private Cart: CartService
+  constructor(public Inventory: InventoryService,
+    public Router: Router,
+    public activatedRoute: ActivatedRoute,
+    public Cart: CartService
   ) {
   }
   subscription: Subscription;
